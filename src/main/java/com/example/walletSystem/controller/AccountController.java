@@ -23,6 +23,7 @@ public class AccountController {
     public ResponseEntity<ResponseAsEntity> createAccount(@RequestBody Account account) {
 		ResponseAsEntity response=new ResponseAsEntity();		
        
+		
             Account newAcount = accountService.save(account);
             response.setStatus("200");
             response.setDescription("User Account created successfully!");
