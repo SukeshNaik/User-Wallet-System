@@ -38,12 +38,12 @@ public class AuthenticationController {
         }
     }
 	 
-	@PostMapping(value = "/login/mobileNumber/{mobileNumber}/password/{password}")
-   public ResponseEntity<ResponseAsEntity> signIn(@PathVariable("mobileNumber") String mobileNumber,
-           @PathVariable("password") String password)
+	@PostMapping("/login")
+   public ResponseEntity<ResponseAsEntity> signIn(@RequestBody User user)
 	{
 		ResponseAsEntity response=new ResponseAsEntity();		
-	
+	String mobileNumber=user.getMobileNumber();
+	String password=user.getPassword();
        try {
            User existingCustomer = userService.findBymobileNumber(mobileNumber);
            if((existingCustomer.getPassword().toString()).compareTo(password)==0)
